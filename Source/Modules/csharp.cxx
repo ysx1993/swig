@@ -4479,6 +4479,7 @@ public:
 
     directorDeclaration(n);
 
+    Printf(f_directors_h, "namespace {\n");
     Printf(f_directors_h, "%s {\n", Getattr(n, "director:decl"));
     Printf(f_directors_h, "\npublic:\n");
 
@@ -4588,7 +4589,8 @@ public:
       Printf(f_directors_h, "\nprivate:\n%s", director_callbacks);
     }
     Printf(f_directors_h, "    void swig_init_callbacks();\n");
-    Printf(f_directors_h, "};\n\n");
+    Printf(f_directors_h, "};\n");
+    Printf(f_directors_h, "} // namespace\n\n");
     Printf(w->code, "}\n\n");
 
     Printf(w->code, "void %s::swig_init_callbacks() {\n", dirclassname);
