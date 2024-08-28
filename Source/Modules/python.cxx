@@ -3805,6 +3805,7 @@ public:
   int classDirectorInit(Node *n) {
     String *declaration = Swig_director_declaration(n);
     Printf(f_directors_h, "\n");
+    Printf(f_directors_h, "namespace {\n");
     Printf(f_directors_h, "%s\n", declaration);
     Printf(f_directors_h, "public:\n");
     Delete(declaration);
@@ -3865,7 +3866,8 @@ public:
       Printf(f_directors_h, "#endif\n\n");
     }
 
-    Printf(f_directors_h, "};\n\n");
+    Printf(f_directors_h, "};\n");
+    Printf(f_directors_h, "} // namespace\n\n");
     return Language::classDirectorEnd(n);
   }
 
